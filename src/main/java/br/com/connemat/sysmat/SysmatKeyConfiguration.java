@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
@@ -41,6 +42,7 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 
 @Configuration
+@Profile(value = "keycloak")
 public class SysmatKeyConfiguration  extends WebSecurityConfigurerAdapter {
 
 	private static final String WORKSPACE_ADMIN_GROUP = "/WORKSPACE_ADMIN_GROUP";

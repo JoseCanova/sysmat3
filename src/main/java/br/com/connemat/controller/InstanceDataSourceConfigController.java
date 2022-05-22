@@ -3,6 +3,7 @@ package br.com.connemat.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import br.com.connemat.model.entity.InstanceDataSourceConfig;
 @RestController
 @RequestMapping(path="/instance-datasource-configs",
 produces=MediaType.APPLICATION_JSON_VALUE)
+@Profile(value="keycloak")
 public class InstanceDataSourceConfigController extends
 		EntityController<InstanceDataSourceConfig, Long, InstanceDataSourceConfigBaseService> {
 

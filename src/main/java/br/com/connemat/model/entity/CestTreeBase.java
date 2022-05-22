@@ -1,21 +1,18 @@
 package br.com.connemat.model.entity;
 
 import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.connemat.Base;
 import br.com.connemat.CreateValidationGroup;
 import br.com.connemat.UpdateValidationGroup;
-import br.com.connemat.model.entity.validation.BaseConstraint;
-import br.com.connemat.util.JsonBaseSerializer;
 
 @Valid
 @MappedSuperclass
@@ -23,6 +20,11 @@ public abstract class CestTreeBase  implements Base<Long>{
 	
 	protected static final long serialVersionUID = 1171752366331602794L;
 
+	@Id
+	@NotNull(groups= {UpdateValidationGroup.class})
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="cest_tree_id" , columnDefinition = "INT NOT NULL")
+	protected Long id;
 	
 	@NotEmpty(groups= {UpdateValidationGroup.class , CreateValidationGroup.class})
 	@Size(max=6, groups= {UpdateValidationGroup.class , CreateValidationGroup.class})
@@ -34,12 +36,6 @@ public abstract class CestTreeBase  implements Base<Long>{
 	@Column(name="description" , columnDefinition = "VARCHAR(1200) NOT NULL")
 	protected String description;
 	
-	@BaseConstraint(groups= {UpdateValidationGroup.class , CreateValidationGroup.class})
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonSerialize(using = JsonBaseSerializer.class)
-	@JoinColumn(name = "cest_tree_parent_id")
-	protected CestTreeBase parent;
-
 	public CestTreeBase() {
 	}
 
@@ -58,14 +54,6 @@ public abstract class CestTreeBase  implements Base<Long>{
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public CestTreeBase getParent() {
-		return parent;
-	}
-
-	public void setParent(CestTreeBase parent) {
-		this.parent = parent;
 	}
 
 	@Override

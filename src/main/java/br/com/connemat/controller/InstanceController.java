@@ -3,6 +3,7 @@ package br.com.connemat.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +20,7 @@ import br.com.connemat.model.entity.Instance;
 @RestController
 @RequestMapping(path="/instances" , produces = MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin(origins = "*")
+@Profile(value="keycloak")
 public class InstanceController 
 extends AttributeLazyController<Instance , Long , InstanceBaseService>{
 	

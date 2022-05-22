@@ -15,6 +15,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -30,7 +31,6 @@ import br.com.connemat.service.config.DataSourceConfigServiceImpl;
 import br.com.connemat.service.datasource.BaseDataSourceConfiguration;
 import br.com.connemat.service.datasource.DataSourceConfigConverter;
 import br.com.connemat.spring.datasource.TenantContext;
-import br.com.connemat.spring.datasource.TenantRoutingDatasource;
 
 @Configuration
 @EnableJpaRepositories(
@@ -43,16 +43,17 @@ public class SysmatMultiTenantConfiguration {
     @Autowired
     private DataSourceConfigServiceImpl service;
     
-    @Autowired
+//    @Autowired
     private InstanceDataSourceConfigBaseService instanceDataSourceService;
     
     @Bean("tenantRoutingDataSource")
     @Qualifier(value="tenantRoutingDataSource")
     @DependsOn("connemat-tm")
     public DataSource tenantRoutingDataSource() {
-    	TenantRoutingDatasource dataSource = new TenantRoutingDatasource();
-    	dataSource.setTargetDataSources(getNewAll());
-    	return dataSource;
+//    	TenantRoutingDatasource dataSource = new TenantRoutingDatasource();
+//    	dataSource.setTargetDataSources(getNewAll());
+    	return DataSourceBuilder.create().build();
+//    	return dataSource;
     }
     
     @Bean
@@ -124,13 +125,16 @@ public class SysmatMultiTenantConfiguration {
         Map<String, Object> jpaPropertiesMap = new HashMap<>();
         jpaPropertiesMap.put(Environment.FORMAT_SQL, true);
         jpaPropertiesMap.put(Environment.SHOW_SQL, true);
-        jpaPropertiesMap.put("hibernate.globally_quoted_identifiers", true);
+        jpaPropertiesMap.put("hibernate.globally_quoted_identifiers", false);
         jpaPropertiesMap.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         jpaPropertiesMap.put("hibernate.transaction.auto_close_session" , true);
 		jpaPropertiesMap.put("hibernate.current_session_context_class" , "thread" );
 		jpaPropertiesMap.put("hibernate.enable_lazy_load_no_trans" , true);
 		jpaPropertiesMap.put("hibermate.hbm2ddl.auto" , "none" );
 		jpaPropertiesMap.put("hibernate.default_schema", "sysmat3");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.action", "drop-and-create");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.create-target", "c:\\softwares\\connemat\\create-sysmat.sql");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.drop-target" , "c:\\softwares\\connemat\\drop-sysmat.sql");
         
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(tenantRoutingDataSource());

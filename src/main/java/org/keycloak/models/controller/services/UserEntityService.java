@@ -16,6 +16,7 @@ import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Example;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,7 @@ import br.com.connemat.rest.client.model.IdRepresentation;
 @Validated
 @Primary
 @Qualifier(value = "userEntityService")
+@Profile(value = "keycloak")
 public class UserEntityService implements UserBaseService {
 
 	@Autowired

@@ -10,6 +10,7 @@ import javax.validation.groups.Default;
 import org.keycloak.models.jpa.entities.GroupAttributeEntity;
 import org.keycloak.models.jpa.entities.GroupEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Example;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -30,13 +31,14 @@ import br.com.connemat.spring.data.repository.InstanceRepository;
 
 @Validated
 @Service
+@Profile(value="keycloak")
 public class InstanceBaseServiceImpl 
 extends ConnematBaseService<Instance,Long,InstanceRepository> 
 implements InstanceBaseService {
 
 	public static final String INSTANCE_ATTRIBUTE = "instance";
 	
-	@Autowired
+//	@Autowired
 	private GroupBaseService groupService;
 	
 	@Autowired

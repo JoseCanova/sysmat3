@@ -12,6 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,6 +20,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @EnableConfigurationProperties
@@ -27,6 +29,7 @@ import com.zaxxer.hikari.HikariConfig;
 				{"org.keycloak.models.repository"},
 				transactionManagerRef ="keycloak-tm" ,
 				entityManagerFactoryRef = "keyCloakEntityManagerFactory")
+@Profile(value = "keycloak")
 public class SysmatKeyCloakDataSourceConfiguration {
 
 	@Autowired
@@ -47,6 +50,11 @@ public class SysmatKeyCloakDataSourceConfiguration {
 	public HikariConfig hikariKeycloakConfig() {
 		Properties theProperties = hirakiKeyCloakProperties() ;
 		return new HikariConfig(theProperties);
+	}
+	
+	@Bean("keycloak-datasource")
+	public DataSource keyCloakDataSource(@Autowired @Qualifier("keycloak-config-datasource") HikariConfig hikariConfig) { 
+		return new HikariDataSource(hikariConfig);
 	}
 	
 	@Bean("keyCloakEntityManagerFactory")

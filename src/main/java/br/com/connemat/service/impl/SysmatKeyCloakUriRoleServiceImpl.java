@@ -14,10 +14,10 @@ import org.keycloak.representations.idm.GroupRepresentation;
 import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.authorization.GroupPolicyRepresentation;
 import org.keycloak.representations.idm.authorization.PolicyRepresentation;
-import org.keycloak.representations.idm.authorization.ResourcePermissionRepresentation;
 import org.keycloak.representations.idm.authorization.ResourceRepresentation;
 import org.keycloak.representations.idm.authorization.RolePolicyRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import br.com.connemat.model.api.ConnematResourcePermission;
@@ -26,6 +26,7 @@ import br.com.connemat.model.api.ResourceUriRole;
 import br.com.connemat.rest.client.AdminRestClient;
 
 @Service
+@Profile(value = "keycloak")
 public class SysmatKeyCloakUriRoleServiceImpl {
 
 	@Autowired private AdminRestClient adminRestClient;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +23,7 @@ import br.com.connemat.model.api.UserGroupRealm;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path="/user-groups")
+@Profile(value="keycloak")
 public class UserGroupController {
 
 	@Autowired

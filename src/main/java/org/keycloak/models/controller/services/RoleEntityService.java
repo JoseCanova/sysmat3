@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.keycloak.models.jpa.entities.RoleEntity;
 import org.keycloak.models.repository.RoleEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 
 @Service
 @Validated
+@Profile(value = "keycloak")
 public class RoleEntityService {
 
 	@Autowired

@@ -5,10 +5,10 @@ import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
 
-import org.keycloak.models.jpa.entities.RealmEntity;
 import org.keycloak.models.jpa.entities.RequiredActionProviderEntity;
 import org.keycloak.models.repository.RequiredActionProviderEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +18,7 @@ import org.springframework.validation.annotation.Validated;
 
 @Service
 @Validated
+@Profile(value = "keycloak")
 public class RequiredActionProviderEntityService {
 
 	@Autowired

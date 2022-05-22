@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import org.keycloak.models.controller.services.RequiredActionProviderEntityService;
 import org.keycloak.models.utils.UserRequiredActionConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -16,6 +17,7 @@ import br.com.connemat.model.api.UserRequiredAction;
 
 @Service
 @Validated
+@Profile(value="keycloak")
 public class UserRequiredActionService {
 
 	@Autowired 

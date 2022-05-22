@@ -7,10 +7,12 @@ import org.keycloak.models.jpa.entities.UserEntity;
 import org.keycloak.models.jpa.entities.UserGroupMembershipEntity;
 import org.keycloak.models.repository.UserGroupMembershipEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Profile(value = "keycloak")
 public class UserGroupMembershipEntityService {
 
 	@Autowired 

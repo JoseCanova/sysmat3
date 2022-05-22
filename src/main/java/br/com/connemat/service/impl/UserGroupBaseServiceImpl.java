@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -25,6 +26,7 @@ import br.com.connemat.rest.client.AdminRestClient;
 @Validated
 @Qualifier(value="userGroupBaseService")
 @Primary
+@Profile(value="keycloak")
 public class UserGroupBaseServiceImpl implements UserGroupBaseService{
 
 	@Autowired

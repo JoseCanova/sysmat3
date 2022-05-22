@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -39,6 +40,7 @@ import br.com.connemat.rest.client.AdminRestClient;
 @Configuration
 @EnableIntegration
 @EnableConfigurationProperties
+@Profile(value = "keycloak")
 public class SysmatIntegrationConfiguration {
 
 	@Autowired

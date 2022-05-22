@@ -6,6 +6,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -23,6 +24,7 @@ import br.com.connemat.model.api.Group;
 @RequestMapping(path = "/instance-groups" , 
 				produces = MediaType.APPLICATION_JSON_VALUE )
 @CrossOrigin(origins = "*")
+@Profile(value="keycloak")
 public class InstanceGroupController{
 
 	@Autowired

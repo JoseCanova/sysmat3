@@ -22,8 +22,8 @@ spring:
   application:
     name: sysmat
   datasource:
-    jdbcUrl: jdbc:postgresql://192.168.0.81:5433/connemat_template?schema=master
-    url: jdbc:postgresql://192.168.0.81:5433/connemat_template?schema=master
+    jdbcUrl: jdbc:postgresql://127.0.0.1:5432/connemat_template?schema=master
+    url: jdbc:postgresql://127.0.0.1:5432/connemat_template?schema=master
     username: postgres 
     password: postgres123
   #hikari:
@@ -37,28 +37,28 @@ spring:
         format_sql: true
         ddl-auto: none 
 #create-drop    
-  security:
-    oauth2: 
-      client:
-        clientId: sysmat 
-        clientSecret: 16fc98ff-c87b-45e1-9a2b-3d87bb3d71a6
-        accessTokenUri: http://192.168.0.81:4200/auth/realms/connemat/protocol/openid-connect/token
-        userAuthorizationUri: http://192.168.0.81:4200/auth/realms/connemat/protocol/openid-connect/auth
-        authenticationScheme: header
-        clientAuthenticationScheme: header 
-      resource:
-        userInfoUri: http://192.168.0.81:4200/auth/realms/connemat/protocol/openid-connect/userinfo
-      resourceserver:  
+  #security:
+    #oauth2: 
+      #client:
+        #clientId: sysmat 
+        #clientSecret: 16fc98ff-c87b-45e1-9a2b-3d87bb3d71a6
+        #accessTokenUri: http://127.0.0.1:4200/auth/realms/connemat/protocol/openid-connect/token
+        #userAuthorizationUri: http://127.0.0.1:4200/auth/realms/connemat/protocol/openid-connect/auth
+        #authenticationScheme: header
+        #clientAuthenticationScheme: header 
+      #resource:
+        #userInfoUri: http://127.0.0.1:4200/auth/realms/connemat/protocol/openid-connect/userinfo
+      #resourceserver:  
         #token-info-uri: http://localhost:8180/auth/realms/sysmat/protocol/openid-connect/token/introspect
-        jwt.issuer-uri: http://192.168.0.81:4200/auth/realms/connemat
-        jwk-set-uri: http://192.168.0.81:4200/auth/realms/connemat/protocol/openid-connect/certs 
+        #jwt.issuer-uri: http://127.0.0.1:4200/auth/realms/connemat
+        #jwk-set-uri: http://127.0.0.1:4200/auth/realms/connemat/protocol/openid-connect/certs 
       #resourceserver: 
       #  jwt.issuer-uri: http://localhost:8180/auth/realms/sysmat
       #  jwk-set-uri: http://localhost:8080/auth/realms/sysmat/protocol/openid-connect/certs
         
 keycloak: 
   realm: connemat
-  auth-server-url: http://192.168.0.81:4200/auth
+  auth-server-url: http://127.0.0.1:4200/auth
   verify-token-audience: true
   use-resource-role-mappings: true
   confidential-port: 0
@@ -72,7 +72,7 @@ sysmat-realm-admin:
   userName: sysmat-admin
   password: temp123
   clientId: admin-cli 
-  redirectUrl: http://192.168.0.81:4200/
+  redirectUrl: http://127.0.0.1:4200/
   
 keycloak-server-urls:
   token-url: /realms/connemat/protocol/openid-connect/token
@@ -86,16 +86,16 @@ keycloak-server-urls:
 
 keycloak-config:
   datasource:
-    jdbcUrl: jdbc:postgresql://192.168.0.81:5432/keycloak
+    jdbcUrl: jdbc:postgresql://127.0.0.1:5432/keycloak
     username: postgres 
     password: postgres123    
   
 sysmatdefault:
   datasource:
-    jdbcUrl: jdbc:postgresql://192.168.0.81:5433/sysmat3_teste?currentSchema=sysmat3
-    url: jdbc:postgresql://192.168.0.81:5433/sysmat3_teste?currentSchema=sysmat3
+    jdbcUrl: jdbc:postgresql://127.0.0.1:5432/sysmat3_teste?currentSchema=sysmat3
+    url: jdbc:postgresql://127.0.0.1:5432/sysmat3_teste?currentSchema=sysmat3
     username: postgres 
     password: postgres123    
     pool-size: 30
     
-jwkCertsUri: http://192.168.0.81:8180/auth/realms/connemat/protocol/openid-connect/certs
+#jwkCertsUri: http://127.0.0.1:8180/auth/realms/connemat/protocol/openid-connect/certs

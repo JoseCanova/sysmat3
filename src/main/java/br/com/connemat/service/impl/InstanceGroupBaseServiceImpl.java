@@ -18,6 +18,7 @@ import org.keycloak.representations.idm.GroupRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -32,6 +33,7 @@ import br.com.connemat.rest.client.AdminRestClient;
 @Qualifier(value="instanceGroupBaseService")
 @Primary
 @Validated
+@Profile(value="keycloak")
 public class InstanceGroupBaseServiceImpl implements InstanceGroupBaseService {
 
 	@Autowired 

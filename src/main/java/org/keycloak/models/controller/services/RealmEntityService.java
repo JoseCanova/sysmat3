@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.keycloak.models.jpa.entities.RealmEntity;
 import org.keycloak.models.repository.RealmEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile(value = "keycloak")
 public class RealmEntityService {
 
 	@Autowired

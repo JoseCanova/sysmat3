@@ -12,6 +12,7 @@ import org.keycloak.models.jpa.entities.UserGroupMembershipEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.json.JsonParser;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
@@ -35,6 +36,7 @@ import br.com.connemat.rest.client.model.WorkspaceRepresentation;
 		path="/workspaces", 
 		produces = MediaType.APPLICATION_JSON_VALUE )
 @CrossOrigin("*")
+@Profile(value="keycloak")
 public class WorkspaceController {
 
 	@Autowired 

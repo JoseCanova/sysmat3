@@ -167,11 +167,15 @@ public class SysmatConfiguration  implements WebMvcConfigurer {
 		Map<String, Object> jpaPropertiesMap = new HashMap<>();
         jpaPropertiesMap.put(Environment.FORMAT_SQL, true);
         jpaPropertiesMap.put(Environment.SHOW_SQL, true);
-        jpaPropertiesMap.put("hibernate.globally_quoted_identifiers", true);
+        jpaPropertiesMap.put("hibernate.globally_quoted_identifiers", false);
         jpaPropertiesMap.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         jpaPropertiesMap.put("hibernate.transaction.auto_close_session" , true);
 		jpaPropertiesMap.put("hibernate.current_session_context_class" , "thread" );
 		jpaPropertiesMap.put("hibermate.hbm2ddl.auto" , "none" );
+		jpaPropertiesMap.put("hibernate.default_schema", "master");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.action", "drop-and-create");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.create-target", "c:\\softwares\\connemat\\create-connemat.sql");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.drop-target" , "c:\\softwares\\connemat\\drop-connemat.sql");
 		return jpaPropertiesMap;
 	}
 	
@@ -186,11 +190,6 @@ public class SysmatConfiguration  implements WebMvcConfigurer {
 	@Primary
 	public DataSource dataSource() {
 		return new HikariDataSource(hikariConfig());
-	}
-
-	@Bean("keycloak-datasource")
-	public DataSource keyCloakDataSource(@Autowired @Qualifier("keycloak-config-datasource") HikariConfig hikariConfig) { 
-		return new HikariDataSource(hikariConfig);
 	}
 
 	@Bean
@@ -208,7 +207,10 @@ public class SysmatConfiguration  implements WebMvcConfigurer {
 		jpaPropertiesMap.put("hibernate.current_session_context_class" , "thread" );
 		jpaPropertiesMap.put("hibernate.enable_lazy_load_no_trans" , true);
 		jpaPropertiesMap.put("hibermate.hbm2ddl.auto" , "none" );
-		
+		jpaPropertiesMap.put("hibernate.default_schema", "master");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.action", "drop-and-create");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.create-target", "c:\\softwares\\connemat\\create-connemat.sql");
+		jpaPropertiesMap.put("javax.persistence.schema-generation.scripts.drop-target" , "c:\\softwares\\connemat\\drop-connemat.sql");
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setJpaVendorAdapter(vendorAdapter);
 		factory.setPackagesToScan(new String []{"br.com.connemat.model.entity"});

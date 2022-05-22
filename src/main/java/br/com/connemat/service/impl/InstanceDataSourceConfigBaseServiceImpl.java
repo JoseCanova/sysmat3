@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -21,6 +22,7 @@ import br.com.connemat.spring.data.repository.InstanceDataSourceConfigRepository
 
 @Service
 @Validated
+@Profile(value="keycloak")
 public class InstanceDataSourceConfigBaseServiceImpl 
 extends ConnematBaseService<InstanceDataSourceConfig, Long, InstanceDataSourceConfigRepository> 
 implements InstanceDataSourceConfigBaseService{

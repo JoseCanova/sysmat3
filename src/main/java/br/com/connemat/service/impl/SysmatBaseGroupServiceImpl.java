@@ -14,6 +14,7 @@ import org.keycloak.models.utils.GroupEntityGroupConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,7 @@ import br.com.connemat.model.api.Group;
 @Qualifier(value="sysmatBaseGroupService")
 @Primary
 @Validated
+@Profile(value="keycloak")
 public class SysmatBaseGroupServiceImpl implements SysmatBaseGroupService {
 
 	@Autowired

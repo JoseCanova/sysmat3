@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import br.com.connemat.service.config.UserRequiredActionService;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "/required-actions")
+@Profile(value="keycloak")
 public class UserRequiredActionController {
 
 	@Autowired

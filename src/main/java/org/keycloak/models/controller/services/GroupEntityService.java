@@ -15,6 +15,7 @@ import org.keycloak.models.utils.GroupRepresentationGroupConverter;
 import org.keycloak.representations.idm.GroupRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Example;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -27,6 +28,7 @@ import br.com.connemat.rest.client.AdminRestClient;
 
 @Service
 @Primary
+@Profile(value = "keycloak")
 public class GroupEntityService
 implements GroupBaseService{
 
