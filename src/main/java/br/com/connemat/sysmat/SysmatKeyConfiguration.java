@@ -53,7 +53,7 @@ public class SysmatKeyConfiguration  extends WebSecurityConfigurerAdapter {
 								//http://192.168.0.81:8180/auth/realms/connemat/protocol/openid-connect/certs	
 	
 	@Value("${jwkCertsUri}")
-	private String jwkCertsUri = "http://192.168.0.81:8180/auth/realms/connemat/protocol/openid-connect/certs";	
+	private String jwkCertsUri = "http://localhost/auth/realms/connemat/protocol/openid-connect/certs";	
 
 	private final String ADMIN_ROLE = "sysmat_admin";
 	

@@ -3,35 +3,35 @@ spring:
     oauth2: 
       client:
         clientId: sysmat 
-        clientSecret: 16fc98ff-c87b-45e1-9a2b-3d87bb3d71a6
-        accessTokenUri: http://127.0.0.1:4200/auth/realms/connemat/protocol/openid-connect/token
-        userAuthorizationUri: http://127.0.0.1:4200/auth/realms/connemat/protocol/openid-connect/auth
+        clientSecret: yy816TKJk6DH1NslHEwV30U0ShWpBz9r
+        accessTokenUri: http://localhost/realms/connemat/protocol/openid-connect/token
+        userAuthorizationUri: http://localhost/realms/connemat/protocol/openid-connect/auth
         authenticationScheme: header
         clientAuthenticationScheme: header 
       resource:
-        userInfoUri: http://127.0.0.1:4200/auth/realms/connemat/protocol/openid-connect/userinfo
+        userInfoUri: http://localhost/realms/connemat/protocol/openid-connect/userinfo
       resourceserver:  
-        #token-info-uri: http://localhost:8180/auth/realms/sysmat/protocol/openid-connect/token/introspect
-        jwt.issuer-uri: http://127.0.0.1:4200/auth/realms/connemat
-        jwk-set-uri: http://127.0.0.1:4200/auth/realms/connemat/protocol/openid-connect/certs 
+        token-info-uri: http://localhost/realms/connemat/protocol/openid-connect/token/introspect
+        jwt.issuer-uri: http://localhost/auth/realms/connemat
+        jwk-set-uri: http://localhost/realms/connemat/protocol/openid-connect/certs 
         
 keycloak: 
   realm: connemat
-  auth-server-url: http://127.0.0.1:4200/auth
+  auth-server-url: http://localhost
   verify-token-audience: true
   use-resource-role-mappings: true
   confidential-port: 0
   ssl-required: external
   resource: sysmat
   credentials: 
-    secret: 16fc98ff-c87b-45e1-9a2b-3d87bb3d71a6
+    secret: yy816TKJk6DH1NslHEwV30U0ShWpBz9r
   bearer-only: false        
   
 sysmat-realm-admin:
-  userName: sysmat-admin
-  password: temp123
-  clientId: admin-cli 
-  redirectUrl: http://127.0.0.1:4200/
+  userName: t807630
+  password: 1234
+  clientId: sysmat 
+  redirectUrl: http://localhost
   
 keycloak-server-urls:
   token-url: /realms/connemat/protocol/openid-connect/token
@@ -57,4 +57,4 @@ sysmatdefault:
     password: postgres123    
     pool-size: 30
     
-#jwkCertsUri: http://127.0.0.1:8180/auth/realms/connemat/protocol/openid-connect/certs
+jwkCertsUri: http://localhost/auth/realms/connemat/protocol/openid-connect/certs
