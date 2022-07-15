@@ -1,0 +1,9 @@
+keycloak: 
+  realm: sysmat
+  auth-server-url: http://127.0.0.1:8080/auth
+  ssl-required: external
+  resource: sysmat
+  credentials: 
+    secret: 11111111-1111-1111-1111-111111111111
+  use-resource-role-mappings: true                
+  
