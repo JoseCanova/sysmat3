@@ -1,0 +1,60 @@
+spring:
+  security:
+    oauth2: 
+      client:
+        clientId: sysmat 
+        clientSecret: yy816TKJk6DH1NslHEwV30U0ShWpBz9r
+        accessTokenUri: http://localhost/realms/connemat/protocol/openid-connect/token
+        userAuthorizationUri: http://localhost/realms/connemat/protocol/openid-connect/auth
+        authenticationScheme: header
+        clientAuthenticationScheme: header 
+      resource:
+        userInfoUri: http://localhost/realms/connemat/protocol/openid-connect/userinfo
+      resourceserver:  
+        token-info-uri: http://localhost/realms/connemat/protocol/openid-connect/token/introspect
+        jwt.issuer-uri: http://localhost/auth/realms/connemat
+        jwk-set-uri: http://localhost/realms/connemat/protocol/openid-connect/certs 
+        
+keycloak: 
+  realm: connemat
+  auth-server-url: http://localhost
+  verify-token-audience: true
+  use-resource-role-mappings: true
+  confidential-port: 0
+  ssl-required: external
+  resource: sysmat
+  credentials: 
+    secret: yy816TKJk6DH1NslHEwV30U0ShWpBz9r
+  bearer-only: false        
+  
+sysmat-realm-admin:
+  userName: t807630
+  password: 1234
+  clientId: sysmat 
+  redirectUrl: http://localhost
+  
+keycloak-server-urls:
+  token-url: /realms/connemat/protocol/openid-connect/token
+  group-url: /admin/realms/connemat/groups
+  user-url: /admin/realms/connemat/users
+  logout-url: /realms/connemat/protocol/openid-connect/logout
+  realm-client-url: /admin/realms/connemat/clients/ 
+  resource-url: /authz/resource-server/resource
+  permissions-url: /permissions
+  permission-url: /authz/resource-server/permission
+
+keycloak-config:
+  datasource:
+    jdbcUrl: jdbc:postgresql://127.0.0.1:5432/keycloak
+    username: postgres 
+    password: postgres123    
+  
+sysmatdefault:
+  datasource:
+    jdbcUrl: jdbc:postgresql://127.0.0.1:5432/sysmat3_teste?currentSchema=sysmat3
+    url: jdbc:postgresql://127.0.0.1:5432/sysmat3_teste?currentSchema=sysmat3
+    username: postgres 
+    password: postgres123    
+    pool-size: 30
+    
+jwkCertsUri: http://localhost/auth/realms/connemat/protocol/openid-connect/certs

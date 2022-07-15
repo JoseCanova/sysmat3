@@ -1,0 +1,5 @@
+git push https://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@github.com/JoseCanova/crawler-data-service.git
+
+git push https://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@github.com/JoseCanova/crawler-data-service.git
+
+git push https://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@github.com/JoseCanova/angular-musicbrainz.git --force

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="sysmat3"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<validation-mode>NONE</validation-mode>
+		<properties>
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.cache.use_second_level_cache"
+				value="false" />
+			<property name="hibernate.cache.use_query_cache"
+				value="false" />
+			<property name="hibernate.cache.region.factory_class"
+				value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />
+			<property
+				name="javax.persistence.schema-generation.scripts.action"
+				value="drop-and-create" />
+			<property
+				name="javax.persistence.schema-generation.scripts.create-target"
+				value="./ddl-model/create_new.sql" />
+			<property
+				name="javax.persistence.schema-generation.scripts.drop-target"
+				value="./ddl-model/drop_new.sql" />
+			<property name="javax.persistence.validation.mode"
+				value="NONE" />
+			<property name="hibernate.search.default.directory_provider" value="filesystem"/>
+			<property name="hibernate.search.default.indexBase" value="/var/lucene/indexes"/>	
+			<!-- <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property> -->
+			<!-- <property name="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory</property> -->
+			
+			<!--
+			<property name="hibernate.search.default.directory_provider" value="filesystem"/>
+			<property name="hibernate.search.default.indexBase" value="/var/lucene/indexes"/>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="hibernate.hikari.minimumIdle" value="5" />
+      		<property name="hibernate.hikari.maximumPoolSize" value="200" />
+      		<property name="hibernate.hikari.idleTimeout" value="2" />
+      		<property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
+			<property name="hibernate.connection.release_mode" value="after_transaction" />
+			<property name="hibernate.jdbc.batch_size" value="30" /> -->
+			<property name="hibernate.transaction.flush_before_completion" value="true" />
+			<property name="hibernate.transaction.auto_close_session" value="true" />
+			<property name="hibernate.current_session_context_class" value="thread" />
+			<!-- <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/> -->
+		</properties>
+		<!-- <jta-data-source>java:/jboss/datasources/MB</jta-data-source> -->
+	</persistence-unit>
+</persistence>
